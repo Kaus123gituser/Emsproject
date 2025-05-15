@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hourly report</title>
+</head>
+<body>
+        <div class="title">
+
+        <p>15 Min-report</p>
+    </div>
+    <div class="data">
+        <!-- <time datetime="">Enter time</time> -->
+        <div class="Box1">
+            <Label>From Date</Label>
+            <input type="date" name="From_date">
+        </div>
+        <div class="Box1">
+            <label for="">To Date</label>
+            <input type="Date" name="to_date">
+        </div>
+        <div class="Box1">
+            <label for="section">Select section</label>
+            <select id="section" name="section" onchange="showInfo()">
+                <option value="select_section">select</option>
+                <option value="power">Power Section</option>
+                <option value="relay">Relay Panel</option>
+                <option value="metering">Metering Unit</option>
+                <option value="scada">SCADA Room</option>
+                <option value="control">Control Room</option>
+            </select>
+        </div>
+        <p>For Multiple meter selection use CTRL+section</p>
+        <div id="infoBox" class="Box1">
+
+            <div>
+
+                <div class="scrollabe-div">
+
+                </div>
+            </div>
+
+        </div>
+        <div class="find_btn  Box1">
+            <input type="button" value="Fetch">
+        </div>
+    </div>
+    <hr>
+
+    <!-- to show the entries from the Sql   -->
+
+    <div class="below_section">
+        <div class="firstlayer">
+
+            <div class="Show"><label>Show</label>
+                <select name="show" id="show">
+                    <option value="1">1</option>
+                    <option value="50">50</option>
+                </select>
+            </div>
+            <div class="Search">
+                <label for="Search">Search:</label>
+                <input type="Search">
+            </div>
+        </div>
+        <hr>
+
+        <div class="table">
+            <div class=""> <label for="">Date Time</label></div>
+            <hr>
+            <div class="table_data" id="tableshow">
+                <p>No data availbe with the </p>
+            <div class="meter1" id="meterData"></div>
+            </div>
+            <hr>
+            <div class=""><label for="">Date Time</label></div>
+        </div>
+    </div>
+
+</body>
+</html>

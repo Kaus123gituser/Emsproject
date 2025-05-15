@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hourly report</title>
+</head>
+<link rel="stylesheet" href="css/style.css">
+
+<body>
+    {{>Header}}
+    <div class="title">
+
+        <p>Hourly-report</p>
+    </div>
+    <div class="data">
+        <!-- <time datetime="">Enter time</time> -->
+        <div class="Box1">
+            <Label>From Date</Label>
+            <input type="date" name="From_date">
+            <input type="time" name="time">
+
+        </div>
+        <div class="Box1">
+            <label for="">To Date</label>
+            <input type="Date" name="to_date">
+            <input type="time" name="time">
+        </div>
+        <div class="Box1">
+            <label for="section">Select section</label>
+            <select id="section" name="section" onchange="showInfo()">
+                <option value="select_section" id="All">All</option>
+                <option value="power" id="power">Power Section</option>
+                <option value="relay" id="relay">Relay Panel</option>
+                <option value="metering" id="metering">Metering Unit</option>
+                <option value="scada" id="scada">SCADA Room</option>
+                <option value="control" id="control">Control Room</option>
+            </select>
+        </div>
+        <div id="infoBox" class="Box1">
+        <p>For Multiple meter selection use CTRL+section</p>
+
+            <div>
+                    <iframe src="" width="100" frameborder="0">data</iframe>
+                <div class="scrollabe-div">
+
+                </div>
+            </div>
+
+        </div>
+        <div class="find_btn  Box1">
+            <input type="button" value="Fetch">
+        </div>
+    </div>
+    <hr>
+
+    <!-- to show the entries from the Sql   -->
+
+    <div class="below_section">
+        <div class="firstlayer">
+
+            <div class="Show"><label>Show</label>
+                <select name="show" id="show">
+                    <option value="1">10</option>
+                    <option value="50">50</option>
+                    <option value="50">100</option>
+
+                </select>
+            </div>
+            <div class="Search">
+                <label for="Search">Search:</label>
+                <input type="Search">
+            </div>
+        </div>
+        <hr>
+
+
+        <div class="table_data" id="tableshow">
+            <p>No data availbe with the </p>
+            <div class="meter1" id="meterData"></div>
+        </div>
+        {{>Footer}}
+</body>
+
+</html>
+<script src="js/index.js"></script>

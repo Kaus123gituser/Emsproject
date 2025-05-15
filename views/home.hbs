@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home section</title>
+</head>
+<link rel="stylesheet" href="css/style.css">
+<style>
+
+</style>
+
+<body> 
+   {{>Header}}
+    <h1>Home dashboard</h1>
+    <!-- home dashboard -->
+    <div class="container">
+        <!-- main container -->
+        <div class="box1">
+            <p>Hourly report </p>
+            <a href="/hourlyreport">⬇ click here</a>
+            <div class="line1"></div>
+
+        </div>
+        <div class="box1">
+            <p>15 Min report</p>
+            <a href="/15minreport">⬇ click here</a>
+            <div class="line2"></div>
+        </div>
+        <div class="box1">
+            <p>Variation report</p>
+            <a href="/variationreport">⬇ click here</a>
+            <div class="line3"></div>
+        </div>
+        <div class="box1">
+            <p>Detailed report</p>
+            <a href="/detail">⬇ click here</a>
+            <div class="line4"></div>
+        </div>
+    </div>
+    {{>Footer}}
+</body>
+
+</html>
+<script src="js/index.js"></script>
+<script>
+    console.log('hello world message from the front end ');
+    console.log('this message is comming from the home,hbs part ')
+</script>

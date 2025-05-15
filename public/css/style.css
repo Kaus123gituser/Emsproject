@@ -1,0 +1,264 @@
+/* style css file */
+/* home section css */
+ html,body {
+        background-color: rgb(238, 238, 238);
+        height: 100%;   
+        margin: 0%;
+    }
+
+    .container {
+        background-color: rgb(255, 254, 253);
+        border: 2px solid rgb(253, 251, 251);
+        width: 90vw;
+        height: 70vh;
+        display: flex;
+        margin: auto;
+    }
+
+    .box1 {
+        border: 2px solid rgb(238, 233, 233);
+        width: 40vw;
+        height: 98px;
+        margin: 12px;
+        margin-top: 52px;
+        /* display: flex; */
+    }
+
+    .box1 a {
+        color: orange;
+        /* padding-left: 122px; */
+    }
+
+    .box1 p {
+        /* padding-left: 122px; */
+    }
+
+    .line1 {
+        border: 2px solid rgb(230, 255, 4);
+        width: 185px;
+        border-radius: 3px;
+        margin-top: 7px;
+    }
+
+    .line2 {
+        border: 2px solid rgb(75, 218, 18);
+        width: 220px;
+        margin-top: 32px;
+        border-radius: 3px;
+        margin-top: 7px;
+
+    }
+
+    .line3 {
+        border: 2px solid rgb(235, 75, 12);
+        width: 120px;
+        margin-top: 32px;
+        border-radius: 3px;
+        margin-top: 7px;
+
+    }
+
+    .line4 {
+        border: 2px solid rgb(32, 102, 233);
+        width: 220px;
+        border-radius: 3px;
+        margin-top: 7px;
+
+    }
+
+    .box1 p {
+        font-size: large;
+        font-weight: bold;
+    }
+
+    .paraset {
+        margin-right: 12px;
+        width: 132px;
+    }
+
+    /* css for the header section  */
+    * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.header {
+    display: flex;
+    background-color: rgb(255, 255, 255);
+    justify-content: space-between;
+    height: 40vh;
+}
+
+.Home {
+    background-color: rgb(16, 16, 109);
+    color: white;
+    height: 12vh;
+padding: 12px;    
+}
+#meterData{
+    padding: 12px ,13px;
+}
+
+#Homesection a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+.left {
+    margin-top: 12px;
+}
+
+.right {
+    margin-top: 12px;
+}
+
+.logo {
+    max-height: 151px;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+}
+
+.logo1 {
+    font-size: 22px;
+}
+
+.para1 {
+    padding-left: 214px;
+    margin-top: 12px;
+}
+
+.para2 {
+    color: aqua;
+    font-size: 65px
+}
+
+.data {
+    /* border: 2px solid red; */
+    margin-top: 12px;
+    display: flex;
+    height: 60vh;
+    justify-content: space-between;
+    /* margin-top: 12px; */
+}
+/* new edition of css syntax  */
+.title {
+    margin-top: 12px;
+}
+
+
+.infoBox{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.scrollable-div {
+    width: 300px;
+    /* Set width */
+    height: 200px;
+    /* Set height */
+    border: 1px solid #ccc;
+    /* Optional border */
+    overflow-y: auto;
+    /* Enable vertical scrolling */
+ 
+    /* Optional margin */
+}
+.below_section{
+    margin-top: 52px;
+    height: 50vh;
+}
+.firstlayer{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 22px;
+}
+.Search label{
+    color: blue;
+    font-weight: bold;
+}
+.Show label{
+    color: blue;
+    font-weight: bold;
+}
+.Search input{
+    /* width: 42px; */
+    height: 42px;
+}
+.table{
+    border: 2px solid rgb(155, 146, 146) ;
+    height: 15vh;
+    width: 95vw;
+    margin: auto;
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(221, 214, 214);
+
+}
+.table_data p{
+    display: flex;
+    justify-content: center;
+    align-items:center ;
+}
+.find_btn input {
+    background-color: rgb(101, 101, 248);
+    width: 123px;
+    height: 32px;
+    margin-right: 12px;
+    color: white;
+    font: 32px;
+    border-radius: 12px;
+    border-color: white;
+    cursor: pointer;
+}
+
+@media (max-width: 600px) {
+    .header {
+        flex-direction: column;
+    }
+
+    .title {
+        order: -1;
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .left,
+    .right {
+        margin-top: 0.5rem;
+    }
+}
+
+/* Footer section code */
+
+.footer{
+    background-color: blue;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/* Footer section code  */
+
+/* Css for table data  */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+.data-table th,
+.data-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: center;
+}
+.data-table th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
