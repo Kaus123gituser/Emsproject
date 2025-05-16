@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>15min report hbs </title>
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
     {{>Header}}
-        <div class="title">
+    <div class="title">
 
         <p>15 Min-report</p>
     </div>
@@ -22,7 +24,7 @@
             <label for="">To Date</label>
             <input type="Date" name="to_date">
         </div>
-        <div class="Box1">
+        {{!-- <div class="Box1">
             <label for="section">Select section</label>
             <select id="section" name="section" onchange="showInfo()">
                 <option value="select_section">select</option>
@@ -32,16 +34,24 @@
                 <option value="scada">SCADA Room</option>
                 <option value="control">Control Room</option>
             </select>
+        </div> --}}
+        <div class="Box1  sectionbox">
+            <label for="section">Select section</label>
+            <select id="section" name="section" multiple size="2" onchange="displaySelectedSections()">
+                <option value="select_section" id="All">All</option>
+                <option value="CCR" id="CCR">CCR</option>
+                <option value="PP" id="PP">PP</option>
+                <option value="RP" id="RP">RP</option>
+                {{!-- <option value="scada" id="scada">SCADA Room</option>
+                <option value="control" id="control">Control Room</option> --}}
+            </select>
         </div>
-        <p>For Multiple meter selection use CTRL+section</p>
-        <div id="infoBox" class="Box1">
+           <div id="content" class="Box1">
+            <p>For Multiple meter selection use CTRL+section</p>
+                <div class="content1">
 
-            <div>
-
-                <div class="scrollabe-div">
-
+               
                 </div>
-            </div>
 
         </div>
         <div class="find_btn  Box1">
@@ -73,12 +83,13 @@
             <hr>
             <div class="table_data" id="tableshow">
                 <p>No data availbe with the </p>
-            <div class="meter1" id="meterData"></div>
+                <div class="meter1" id="meterData"></div>
             </div>
             <hr>
             <div class=""><label for="">Date Time</label></div>
         </div>
     </div>
-{{>Footer}}
+    {{>Footer}}
 </body>
+
 </html>

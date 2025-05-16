@@ -15,11 +15,11 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static('public'));
 
-const config = {    
+const config = {
     user: 'mywebuser',
     password: 'admin',
     server: 'DELL',
-    database: 'UTCL_ROORKEE',
+    database: 'JSW',
     options: {
         trustServerCertificate: true
     }
@@ -57,8 +57,8 @@ app.get('/api/meter-data', async (req, res) => {
     try {
         // const utclData = await sql.query(`SELECT * FROM UTCL_ROORKEE`);
         const metMasData = await sql.query(`SELECT * FROM dbo.MET_MAS`);
-        const metMasData2 = await sql.query(`SELECT * FROM dbo.MET_MAS2`);
-
+        const metMasData2 = await sql.query(`SELECT * FROM dbo.MET_MAS_RUNS`);
+        console.log(" data from metamas   ", metMasData);
         res.json({
 
             metMas: metMasData.recordset,
@@ -73,8 +73,8 @@ app.get('/api/meter-data', async (req, res) => {
 app.get('/api/meters', async (req, res) => {
     try {
         await sql.connect(config);
-        const result = await sql.query('SELECT TOP 50 * FROM dbo.ALLDATA_KWH1 ORDER BY timestamp DESC');
-        res.json(result.recordset);
+        const result = await sql.query('SELECT TOP 50 * FROM dbo.ALLDATA_KWH4 ORDER BY timestamp DESC');
+        res.json(result.recordset, "actual data");
     } catch (err) {
         console.error('SQL error:', err);
         res.status(500).json({ error: 'Database error' });
@@ -84,13 +84,16 @@ const META_API_URL = 'http://localhost:8080/api/meter-data';        // ← repla
 const KWH_API_URL = 'http://localhost:8080/api/meters';  // ← replace with real URL of API ②
 function timestampToDate(ts) {
     const d = new Date(ts);
+    const date = d.toISOString().split('T')[0];
+    const time = d.toTimeString().split(' ')[0];
+    return `${date} ${time}`
     // return d.toISOString().split('')[0];
-    return d.toISOString().split('T')[0];                   // yyyy-mm-dd
+    // return d.toISOString().split('T')[0];                   // yyyy-mm-dd
 }
 // Main route 
 app.post('/api/hourlyreport', async (req, res) => {
     console.log('✅ /api/hourlyreport route was hit');
-        console.log('Request body:', req.body);
+    console.log('Request body:', req.body);
     try {
         // read user input 
         const { section, startDate, endDate } = req.body;
@@ -102,6 +105,7 @@ app.post('/api/hourlyreport', async (req, res) => {
         // Filter metadata  by section
         // metaRaw.met_des
         const meters = metaRaw.metMas.filter(m => m.SECTION === section);
+        console.log(" matched meters in selected sectionn ", meters);
         // 4) build a map MET_ID -> MET_DES so we can rename Later
         const id2name = {};
         meters.forEach(m => { id2name[m.MET_ID] = m.MET_DES });
@@ -109,21 +113,37 @@ app.post('/api/hourlyreport', async (req, res) => {
         // build a map MET_ID -> MET_DES so we can rename later 
         // 5 keep only rows in kwh API whoose date is in range 
         // kwhr is an array of objects with timestamp 
+        // convert start and end to Date Objects once 
+        // Convert start and end to Date objects once
+        const start = new Date(startDate);
+        const end = new Date(endDate);
+        // end.setDate(end.getDate()+1);
+
+        end.setDate(end.getDate());
+        function parseDDMMYYYY(dateStr) {
+            const [day, month, yearTime] = dateStr.split('/');
+            const [year, time] = yearTime.split(' ');
+            return new Date(`${year}-${month}-${day}T${time || '00:00:00'}`);
+        }
+
 
         const kwhRowsInRange = kwhraw.filter(row => {
-            const d = timestampToDate(row.timestamp);
-            return d >= startDate && d <= endDate;
+            const d = parseDDMMYYYY(row.timestamp);
+            return d >= start && d <= end;
         });
+        console.log("filterd KWH rows in date range :", kwhRowsInRange.length);
         // 6 For each meter , grab its KWH field from every row 
         // and build {date ,element , kwh }  rows for the front-end table 
         const tableRows = [];
         kwhRowsInRange.forEach(row => {
-            const dateonly = timestampToDate(row.timestamp);
+            const d = new Date(row.timestamp);
+            const dateTimeString = `${d.toISOString().split('T')[0]} ${d.toTimeString().split(' ')[0]}`;
+            // const dateonly = timestampToDate(row.timestamp);
             Object.keys(id2name).forEach(metId => {
-                const colname = `${metId}_KWH`;
+                const colname = `${metId}_kwh`;
                 if (row[colname] !== undefined) {
                     tableRows.push({
-                        date: dateonly,
+                        date: dateTimeString,
                         element: id2name[metId],
                         kwh: row[colname],
                     });
@@ -131,19 +151,21 @@ app.post('/api/hourlyreport', async (req, res) => {
             });
         });
         res.json(tableRows);
+        console.log('🚀 Final tableRows being sent to frontend:', tableRows);
+
     }
     catch (err) {
         console.log(err);
         res.status(500).send('Server Error');
     }
 })
-// sql.connect(config).then(pool => {
-//     return pool.request().query('SELECT TOP 10 * FROM dbo.ALLDATA_KWH1');
-// }).then(result => {
-//     console.log(result.recordset); // show data
-// }).catch(err => {
-//     console.error('SQL Connection Error:', err);
-// });
+sql.connect(config).then(pool => {
+    return pool.request().query('SELECT TOP 50 * FROM dbo.ALLDATA_KWH4 ORDER BY timestamp DESC');
+}).then(result => {
+    console.log(result.recordset); // show data
+}).catch(err => {
+    console.error('SQL Connection Error:', err);
+});
 // an API for the button 
 
 app.listen(PORT, () => {

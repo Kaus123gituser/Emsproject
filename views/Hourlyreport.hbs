@@ -18,7 +18,7 @@
         <!-- <time datetime="">Enter time</time> -->
         <div class="Box1">
             <Label>From Date</Label>
-            <input type="date"  name="Fromdate" id="startdate">
+            <input type="date" name="Fromdate" id="startdate">
             {{!-- <input type="time" name="time" id="starttime"> --}}
 
         </div>
@@ -27,23 +27,59 @@
             <input type="Date" name="todate" id="todate">
             {{!-- <input type="time" name="time" id="time"> --}}
         </div>
-        <div class="Box1">
+        <div class="Box1  sectionbox">
             <label for="section">Select section</label>
-            <select id="section" name="section" >
+            <select id="section" name="section" multiple size="6" onchange="displaySelectedSections()">
                 <option value="select_section" id="All">All</option>
-                <option value="CCR" id="CCR">CCR</option>
-                <option value="PP" id="PP">PP</option>
-                <option value="RP" id="RP">RP</option>
+                <option value="OCA01" id="CCR">OCA01</option>
+                <option value="1CA01" id="PP">1CA01</option>
+                <option value="1CA02" id="RP">1CA02</option>
+                <option value="OCA02">OCA02</option>
+                <option value="2CA01">2CA01</option>
+                <option value="2CA02">2CA02</option>
+                <option value="OCA03">OCA03</option>
+                <option value="3CA01">3CA01</option>
+                <option value="3CA02">3CA02</option>
+                <option value="OCA04">OCA04</option>
+                <option value="4CA01">4CA01</option>
+                <option value="4CA02">4CA02</option>
+                <option value="OCB01">OCB01</option>
+                <option value="5CA01">5CA01</option>
+                <option value="5CA02">5CA02</option>
+                <option value="OCB02">OCBO2</option>
+                <option value="6CA01">6CA01</option>
+                <option value="6CA02">6CA02</option>
+                <option value="OCB03">OCB03</option>
+                <option value="7CA01">7CA01</option>
+                <option value="7CA02">7CA02</option>
+                <option value="OCB04">OCB04</option>
+                <option value="8CA01">8CA01</option>
+                <option value="4CA02">4CA02</option>
+                <option value="SwitchYard">SwitchYard</option>
+                <option value="BoilerSystem">BoilerSystem</option>
+                <option value="Auxillary_water">Auxillary Water system</option>
+                <option value="BEDAshhandling">BED ASH handling </option>
+                <option value="Ashhandling">ASH HANDLING</option>
+                <option value="Limehandingsystem">Lime handing</option>
+                <option value="Lignitehanding">Lignite handling</option>
+
+
+
+
+
+
+
+
                 {{!-- <option value="scada" id="scada">SCADA Room</option>
                 <option value="control" id="control">Control Room</option> --}}
             </select>
         </div>
         <div id="content" class="Box1">
             <p>For Multiple meter selection use CTRL+section</p>
-                <div class="content1">
+            <div class="content1">
 
-               
-                </div>
+
+            </div>
 
         </div>
         <div class="find_btn  Box1">
@@ -59,9 +95,9 @@
 
             <div class="Show"><label>Show</label>
                 <select name="show" id="show">
-                    <option value="1">10</option>
-                    <option value="50">50</option>
-                    <option value="50">100</option>
+                    <option id="ten" value="1">10</option>
+                    <option id="fifty" value="50">50</option>
+                    <option id="hundred" value="50">100</option>
 
                 </select>
             </div>
@@ -74,10 +110,10 @@
 
 
         <div class="meter1" id="meterData">
-            <table style="width: 50%;" border="1">
+            <table style="width: 50%; margin: auto;" border="1">
                 <thead>
                     <tr>
-                        <th style="width: 50%;">Date</th>
+                        <th style="width: 30%;">Date</th>
                         <th>Element</th>
                         <th>KWH</th>
                     </tr>

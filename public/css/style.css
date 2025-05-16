@@ -32,7 +32,14 @@
     .box1 p {
         /* padding-left: 122px; */
     }
-
+#section{
+    width: 150px;
+    height: auto;
+}
+.sectionbox{
+    display: flex;
+    flex-direction: column;
+}
     .line1 {
         border: 2px solid rgb(230, 255, 4);
         width: 185px;
