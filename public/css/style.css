@@ -247,6 +247,7 @@ padding: 12px;
 /* Footer section code  */
 
 /* Css for table data  */
+/* 
 .data-table {
   width: 100%;
   border-collapse: collapse;
@@ -261,4 +262,22 @@ padding: 12px;
 .data-table th {
   background-color: #f4f4f4;
   font-weight: bold;
+} */
+/* new table css starts from here  */
+
+.headingrow th{
+
+    padding: 22px;
+
+}
+/* making a div scrollable  */
+.content1{
+    background-color: #ffffff;
+    border: 2px double #403557;
+    padding-left: 10px;
+    box-sizing: border-box;
+
+    /* Scrollable Bar  */
+    height: 150px;
+    overflow: auto;
 }

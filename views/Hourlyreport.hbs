@@ -18,39 +18,36 @@
         <!-- <time datetime="">Enter time</time> -->
         <div class="Box1">
             <Label>From Date</Label>
-            <input type="date" name="From_date">
-            <input type="time" name="time">
+            <input type="date"  name="Fromdate" id="startdate">
+            {{!-- <input type="time" name="time" id="starttime"> --}}
 
         </div>
         <div class="Box1">
-            <label for="">To Date</label>
-            <input type="Date" name="to_date">
-            <input type="time" name="time">
+            <label>To Date</label>
+            <input type="Date" name="todate" id="todate">
+            {{!-- <input type="time" name="time" id="time"> --}}
         </div>
         <div class="Box1">
             <label for="section">Select section</label>
-            <select id="section" name="section" onchange="showInfo()">
+            <select id="section" name="section" >
                 <option value="select_section" id="All">All</option>
-                <option value="power" id="power">Power Section</option>
-                <option value="relay" id="relay">Relay Panel</option>
-                <option value="metering" id="metering">Metering Unit</option>
-                <option value="scada" id="scada">SCADA Room</option>
-                <option value="control" id="control">Control Room</option>
+                <option value="CCR" id="CCR">CCR</option>
+                <option value="PP" id="PP">PP</option>
+                <option value="RP" id="RP">RP</option>
+                {{!-- <option value="scada" id="scada">SCADA Room</option>
+                <option value="control" id="control">Control Room</option> --}}
             </select>
         </div>
-        <div id="infoBox" class="Box1">
-        <p>For Multiple meter selection use CTRL+section</p>
+        <div id="content" class="Box1">
+            <p>For Multiple meter selection use CTRL+section</p>
+                <div class="content1">
 
-            <div>
-                    <iframe src="" width="100" frameborder="0">data</iframe>
-                <div class="scrollabe-div">
-
+               
                 </div>
-            </div>
 
         </div>
         <div class="find_btn  Box1">
-            <input type="button" value="Fetch">
+            <input type="button" value="Fetch" id="fetchBtn">
         </div>
     </div>
     <hr>
@@ -76,10 +73,23 @@
         <hr>
 
 
-        <div class="table_data" id="tableshow">
-            <p>No data availbe with the </p>
-            <div class="meter1" id="meterData"></div>
+        <div class="meter1" id="meterData">
+            <table style="width: 50%;" border="1">
+                <thead>
+                    <tr>
+                        <th style="width: 50%;">Date</th>
+                        <th>Element</th>
+                        <th>KWH</th>
+                    </tr>
+                </thead>
+                <tbody id="meterTableBody">
+                    <tr>
+                        <td colspan="3">No data yet</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
+
         {{>Footer}}
 </body>
 
